@@ -35,3 +35,15 @@ class ProductPage(BasePage):
         except TimeoutException:
             return True
         return False
+
+#   Теперь в этом же классе реализуем метод ............, в котором будем перехватывать исключение.
+#   В него будем передавать два аргумента: как искать (css, id, xpath и тд) и собственно что искать (строку-селектор).
+#   Чтобы перехватывать исключение, нужна конструкция try/except:
+#   def is_element_present(self, how, what):
+#       try:
+#           self.browser.find_element(how, what)
+#       except (имя исключения):
+#           return False
+#       return True
+#   Чтобы импортировать нужное нам исключение, в самом верху файла нужно указать:
+#   from selenium.common.exceptions import имя_исключения
