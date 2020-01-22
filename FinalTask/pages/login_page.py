@@ -1,6 +1,6 @@
 from .base_page import BasePage
 from selenium.webdriver.common.by import By
-from .locators import BasePageLocators
+from .locators import LoginPagesLocators
 from selenium import webdriver
 import time
 
@@ -26,13 +26,9 @@ class LoginPage(BasePage):
         assert self.register_form, "Register form is not exist!"
 
     def register_new_user(self, email, password): #передаем 2 аргумента из вне?
-        browser = webdriver.Chrome()
-        # input_email = input("input your email \n")
-        # input_password = input("input password, min.9 charaster \n")
-        time.sleep(1)
-        browser.find_element_by_css_selector("input#id_registration-email.form-control").send_keys(email)
-
-        browser.find_element_by_css_selector("#id_registration-password1").send_keys(password)
-        browser.find_element_by_css_selector("#id_registration-password2").send_keys(password)
-        register_button = browser.find_element_by_css_selector('[name="registration_submit"]')
-        register_button.click()
+        self.browser = webdriver.Chrome()
+        # time.sleep(3)
+        self.browser.find_element(*LoginPagesLocators.EMAIL_FIELD).send_keys(email)
+        self.browser.find_element(*LoginPagesLocators.PASSWORD_FIELD).send_keys(password)
+        self.browser.find_element(*LoginPagesLocators.CONFIRM_PASSWORD_FIELD).send_keys(password)
+        self.browser.find_element_by_css_selector(*LoginPagesLocators.REGISTER_BUTTON).click()

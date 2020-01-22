@@ -4,7 +4,6 @@ from .pages.login_page import LoginPage
 import pytest
 
 import time
-email = str(time.time()) + "@fakemail.org"
 
 @pytest.mark.skip
 def test_guest_should_see_add_link(browser):
@@ -44,14 +43,15 @@ def test_guest_can_go_to_login_page_from_product_page(browser):
 
 class TestUserAddToBasketFromProductPage():
     @pytest.fixture(scope="function", autouse=True)
-    def setup(self):
+    def setup(self, browser):
+        email = str(time.time()) + "@fakemail.org"
+        password = str(time.time())
+        link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
         self.browser = browser
-        self.page = LoginPage(browser=browser, login_link=url)
-        login_link = "http://selenium1py.pythonanywhere.com/ru/accounts/login/"
-
+        self.page = LoginPage(browser, link)
         self.page.open()
-        time.sleep(2)
-        self.page.register_new_user(str(email), "qwertyuiop12")
+        # time.sleep(2)
+        self.page.register_new_user(str(email), str(password))
         self.page.should_be_authorized_user()
 
 
