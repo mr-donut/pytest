@@ -14,9 +14,7 @@ class BasketPage(BasePage):
 
     def basket_empty_message(self):
         language = self.browser.execute_script("return window.navigator.userLanguage || window.navigator.language")
-        # page_language = self.browser.find_element(By.CSS_SELECTOR, "option[selected='selected']").text
         message = self.browser.find_element(By.CSS_SELECTOR, "#content_inner p").text
 
         assert str("basket is empty") in message, "Basket is not empty."
         assert str("basket is empty") in message, "Basket is not empty." if language == str("en") else "Language of the page not English!"
-        # assert str("корзина пуста") in message, "Корзина не пуста." if language == str("ru") else "Язык не русский!"

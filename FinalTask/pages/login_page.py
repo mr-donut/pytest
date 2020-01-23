@@ -25,10 +25,10 @@ class LoginPage(BasePage):
         self.register_form = (By.CSS_SELECTOR, "#register_form")
         assert self.register_form, "Register form is not exist!"
 
-    def register_new_user(self, email, password): #передаем 2 аргумента из вне?
-        self.browser = webdriver.Chrome()
+    def register_new_user(self, email, password): #передаем 2 аргумента из вне
+        # self.browser = webdriver.Chrome()
         # time.sleep(3)
         self.browser.find_element(*LoginPagesLocators.EMAIL_FIELD).send_keys(email)
         self.browser.find_element(*LoginPagesLocators.PASSWORD_FIELD).send_keys(password)
         self.browser.find_element(*LoginPagesLocators.CONFIRM_PASSWORD_FIELD).send_keys(password)
-        self.browser.find_element_by_css_selector(*LoginPagesLocators.REGISTER_BUTTON).click()
+        self.browser.find_element(*LoginPagesLocators.REGISTER_BUTTON).click()

@@ -14,7 +14,7 @@ class ProductPage(BasePage):
         assert self.is_element_present(*ProductPageLocators.ADD_LINK), "Goods link is not presented"
 
     def should_be_message(self):
-        product_name = self.browser.find_element(By.CSS_SELECTOR, ".col-sm-6.product_main").text #div.col-sm-6:nth-child(2)
+        product_name = self.browser.find_element(By.CSS_SELECTOR, ".col-sm-6.product_main").text
         message_product_name = self.browser.find_element(By.CSS_SELECTOR, ".alertinner strong").text
         assert str(message_product_name) in str(product_name), \
             "Message not matched with product name"
@@ -27,7 +27,7 @@ class ProductPage(BasePage):
 
     def should_not_be_success_message(self):
         assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
-       "Success message is presented, but should not be"
+            "Success message is presented, but it should not be"
 
     def is_disappeared(self, how, what, timeout=4):
         try:

@@ -25,8 +25,7 @@ class ProductPageLocators:
 
     BASKET_LINK = (By.CSS_SELECTOR, "span.btn-group")
 
-    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "div.alert:nth-child(1)")
-    #"div.alert.alert-safe.alert-noicon.alert-success.fade.in div.alertinner"
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "div.alert.alert-safe.alert-noicon.alert-success.fade.in div.alertinner")
 
 class BasketPageLocators:
     BASKET_LINK = (By.CSS_SELECTOR, "span.btn-group")

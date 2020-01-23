@@ -18,7 +18,7 @@ class BasePage():
     def is_element_present(self, how, what):
         try:
             self.browser.find_element(how, what)
-        except (NoSuchElementException):
+        except NoSuchElementException:
             return False
         return True
 
@@ -41,8 +41,8 @@ class BasePage():
         try:
             WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
         except TimeoutException:
-            return False
-        return True
+            return True  #здесь нужно быть очень внимательным, т.к. даже преподаватели путаются
+        return False  #здесь нужно быть очень внимательным, т.к. даже преподаватели путаются, а иначе "AssertionError" !
 
     def is_disappeared(self, how, what, timeout=4):
         try:
